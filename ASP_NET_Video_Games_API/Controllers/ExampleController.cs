@@ -4,12 +4,14 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace ASP_NET_Video_Games_API.Controllers
 {
+    // api/examples
     [Route("api/[controller]")]
     [ApiController]
-    public class ExampleController : ControllerBase
+    public class ExamplesController : ControllerBase
     {
         private readonly ApplicationDbContext _context;
-        public ExampleController(ApplicationDbContext context)
+
+        public ExamplesController(ApplicationDbContext context)
         {
             _context = context;
         }
@@ -17,15 +19,17 @@ namespace ASP_NET_Video_Games_API.Controllers
         [HttpGet]
         public IActionResult GetPublishers()
         {
-            var gamePublishers = _context.VideoGames.Select(vg => vg.Publisher).Distinct();
-            return Ok(gamePublishers);
+            var videoGamePublishers = _context.VideoGames.Select(vg => vg.Publisher).Distinct();
+
+            return Ok(videoGamePublishers);
         }
 
         [HttpGet("{pubName}")]
         public IActionResult GetGamesByPublisher(string pubName)
         {
-            var gamesByPublisher = _context.VideoGames.Where(vg => vg.Publisher == pubName);
-            return Ok(gamesByPublisher);
+            var videoGames = _context.VideoGames.Where(vg => vg.Publisher == pubName);
+            return Ok(videoGames);
         }
+
     }
 }
