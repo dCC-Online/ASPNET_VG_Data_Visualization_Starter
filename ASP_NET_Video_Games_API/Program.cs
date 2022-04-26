@@ -1,6 +1,5 @@
 using ASP_NET_Video_Games_API.Data;
 using Microsoft.EntityFrameworkCore;
-//Testing .git
 
 var builder = WebApplication.CreateBuilder(args);
 
