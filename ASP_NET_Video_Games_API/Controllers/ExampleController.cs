@@ -30,6 +30,5 @@ namespace ASP_NET_Video_Games_API.Controllers
             var videoGames = _context.VideoGames.Where(vg => vg.Publisher == pubName);
             return Ok(videoGames);
         }
-
     }
 }
